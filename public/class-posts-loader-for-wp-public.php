@@ -96,7 +96,20 @@ class Posts_Loader_For_Wp_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/posts-loader-for-wp-public.js', array( 'jquery' ), $this->version, false );
+		 wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/posts-loader-for-wp-public.js', array( 'jquery' ), $this->version, false );
+		 $args = array();
+
+		 if( is_archive() || ( is_home() && !is_front_page() ) || is_tax()){
+			 global $wp_query;
+			 // echo "<pre>";print_r($wp_query);echo "</pre>";
+			 $args['ajax_url'] = admin_url( 'admin-ajax.php' );
+			 $args['query_args'] = json_encode( $wp_query->query_vars );
+			 $args['current_page'] = get_query_var('paged') ? get_query_var('paged') : 1;
+			 $args['max_page'] = $wp_query->max_num_pages;
+		 }
+
+		 wp_localize_script( $this->plugin_name, 'localizedArgs', $args );
+		 wp_enqueue_script( $this->plugin_name );
 
 	}
 
