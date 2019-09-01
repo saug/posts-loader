@@ -112,6 +112,12 @@ class Posts_Loader_For_Wp {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-posts-loader-for-wp-i18n.php';
 
 		/**
+		 * Helper functions
+		 *
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/helper-functions.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-posts-loader-for-wp-admin.php';
@@ -121,6 +127,8 @@ class Posts_Loader_For_Wp {
 		 * side of the site.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-posts-loader-for-wp-public.php';
+
+
 
 		$this->loader = new Posts_Loader_For_Wp_Loader();
 
