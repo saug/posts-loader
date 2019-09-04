@@ -112,6 +112,11 @@ class Posts_Loader_For_Wp {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-posts-loader-for-wp-i18n.php';
 
 		/**
+		 * The class responsible for defining all AJAX actions of the site.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-posts-loader-for-wp-ajax.php';
+
+		/**
 		 * Helper functions
 		 *
 		 */
